@@ -1,0 +1,17 @@
+name: Parkour
+version: 0.0.1
+main: com.parkour.main.ParkourMain
+load: POSTWORLD
+authors: ['EndMySuffering']
+api-version: 1.16
+
+commands:
+  parkour:
+    usage: /parkour <create|remove|join> <map|savepoint>
+    description: Command to create and remove a parkour map.
+    aliases: [pk]
+  
+softdepend:
+  - Multiverse-Core
+  - IridiumSkyblock
+  - Essentials
