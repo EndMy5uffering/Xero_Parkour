@@ -170,7 +170,7 @@ public class ParkourManager implements Listener{
 	
 	@EventHandler
 	public void onSignDone(SignChangeEvent e) {
-		if(e.getPlayer().hasPermission(ParkourPerms.signs)) return;
+		if(!e.getPlayer().hasPermission(ParkourPerms.signs)) return;
 		String l0 = e.getLine(0);
 		String l1 = e.getLine(1);
 		String l2 = e.getLine(2);
