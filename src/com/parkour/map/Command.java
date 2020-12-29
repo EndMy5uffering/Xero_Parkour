@@ -45,7 +45,52 @@ public class Command {
 	}
 	
 	private String doReplacements(CommandTrigger t) {
-		return command.replace("{PLAYER}", t.getPlayer().getName());
+		String[] args = command.split(" ");
+		String out = "";
+		int count = 0;
+		for(String s: args) {
+			if(s.charAt(0) == '~') {
+				count++;
+				if(s.length() == 1) {
+					switch(count) {
+						case 1:
+							s = String.valueOf(t.getPoint().getPoint().getX());
+							break;
+						case 2:
+							s = String.valueOf(t.getPoint().getPoint().getY());
+							break;
+						case 3:
+							s = String.valueOf(t.getPoint().getPoint().getZ());
+							break;
+						default:
+							break;
+					}
+				} else if(s.length() > 1) {
+					double x = 0;
+					try {
+						x = Double.valueOf(s.replace("~", ""));
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+					switch(count) {
+						case 1:
+							s = String.valueOf(t.getPoint().getPoint().getX() + x);
+							break;
+						case 2:
+							s = String.valueOf(t.getPoint().getPoint().getY() + x);
+							break;
+						case 3:
+							s = String.valueOf(t.getPoint().getPoint().getZ() + x);
+							break;
+						default:
+							break;
+					}
+				}
+			}
+			out += s + " ";
+		}
+		out = out.substring(0, out.length()-1);
+		return out.replace("{PLAYER}", t.getPlayer().getName());
 	}
 	
 	public void sendCommandText(Player p, int index) {

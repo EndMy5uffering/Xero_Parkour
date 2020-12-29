@@ -5,9 +5,11 @@ import org.bukkit.entity.Player;
 public class CommandTrigger {
 
 	private Player player;
+	private SavePoint point;
 	
-	public CommandTrigger(Player p) {
+	public CommandTrigger(Player p, SavePoint point) {
 		this.player = p;
+		this.point = point;
 	}
 
 	public Player getPlayer() {
@@ -17,5 +19,8 @@ public class CommandTrigger {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-	
+
+	public SavePoint getPoint() {
+		return point;
+	}
 }

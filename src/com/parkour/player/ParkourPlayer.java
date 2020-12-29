@@ -42,14 +42,14 @@ public class ParkourPlayer {
 		this.point = point;
 		oldPoints.add(point);
 		for(Command c : point.getCommands()) {
-			c.execute(new CommandTrigger(getPlayer()));
+			c.execute(new CommandTrigger(getPlayer(), point));
 		}
 		getPlayer().sendMessage(ChatColor.GREEN + "You have reached a check point.");
 	}
 	
 	public void endReached() {
 		for(Command c : map.getCommands()) {
-			c.execute(new CommandTrigger(getPlayer()));
+			c.execute(new CommandTrigger(getPlayer(), new SavePoint(map.getEnd(), 2, map.getId())));
 		}
 		getPlayer().sendMessage(ChatColor.GREEN + "You have reached the end.");
 		ParkourManager.removePlayerData(this.getPlayer());
