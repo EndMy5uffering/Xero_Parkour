@@ -93,6 +93,7 @@ public class ParkourPlayer {
 		player.teleport(to);
 		player.setVelocity(new Vector(0,0,0));
 		player.setFallDistance(0);
+		player.setFireTicks(0);
 	}
 	
 	public Location getRespawnLocation() {

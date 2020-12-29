@@ -10,6 +10,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
@@ -209,6 +210,10 @@ public class ParkourManager implements Listener{
 	
 	@EventHandler
 	public void InteractEvent(PlayerInteractEvent e) {
+		if(players.get(e.getPlayer()) != null) {
+			e.setCancelled(true);
+		}
+		
 		if(e.getClickedBlock() == null) return;
 		if(e.getClickedBlock().getType().toString().toLowerCase().contains("sign")) {
 			

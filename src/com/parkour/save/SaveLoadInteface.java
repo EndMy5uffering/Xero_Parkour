@@ -177,7 +177,6 @@ public class SaveLoadInteface {
 				out.add(p);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return out;
@@ -253,9 +252,9 @@ public class SaveLoadInteface {
 	
 	public void UpdateStartOfMap(ParkourMap map) {
 		String sql = "UPDATE parkour SET " +
-				"endx='" + map.getEnd().getX() + "',"
-				+ "endy='" + map.getEnd().getY() + "',"
-				+ "endz='" + map.getEnd().getZ() + "'"
+				"startx='" + map.getStart().getX() + "',"
+				+ "starty='" + map.getStart().getY() + "',"
+				+ "startz='" + map.getStart().getZ() + "'"
 				+ " WHERE uuid='" + map.getId() + "';";
 		execute(sql);
 	}
