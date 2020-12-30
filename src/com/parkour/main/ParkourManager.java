@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Set;
 
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -210,7 +211,7 @@ public class ParkourManager implements Listener{
 	
 	@EventHandler
 	public void InteractEvent(PlayerInteractEvent e) {
-		if(players.get(e.getPlayer()) != null) {
+		if(ParkourManager.hasPlayerParkourData(e.getPlayer()) && e.getItem() != null && e.getItem().getType().equals(Material.ENDER_PEARL)) {
 			e.setCancelled(true);
 		}
 		
